@@ -1,4 +1,4 @@
-# PIEZO1
+# PIEZO1 Variants
 
 Deciphering gain-of-function against loss-of-function variants with AlphaMissense: A case study with the mechanosensitive PIEZO1 ion channel protein
 

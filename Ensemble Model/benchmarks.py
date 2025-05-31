@@ -22,3 +22,17 @@ for i, feature in enumerate(features):
     auc = roc_auc_score(y, raw_scores)
 
     print(f"{feature:12s} | AUC: {auc:.3f} | Accuracy (with ambiguity penalized): {acc:.3f}")
+
+#plotting of cm
+
+from sklearn.metrics import confusion_matrix, classification_report, roc_curve
+report = classification_report(y, predictions, target_names=['Benign', 'Pathogenic'])
+print(report)
+
+labels = ['Benign', 'Pathogenic']
+cm_df = pd.DataFrame(cm, index=labels, columns=labels)
+sns.heatmap(cm_df, annot=True, fmt='d', cmap='Blues')
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.savefig("confusion_matrix.png", dpi=300)
+plt.show()

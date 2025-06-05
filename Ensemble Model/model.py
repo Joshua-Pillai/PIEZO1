@@ -42,7 +42,7 @@ constraints = {'type': 'eq', 'fun': lambda w: np.sum(w) - 1}
 
 result = minimize(objective, initial_weights, method='SLSQP', bounds=bounds, constraints=constraints)
 optimal_weights = result.x
-print("✅ Optimal Weights:")
+print("Optimal Weights:")
 for f, w in zip(features, optimal_weights):
     print(f"{f}: {w:.3f}")
 

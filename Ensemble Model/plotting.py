@@ -1,3 +1,29 @@
+#benchmarking
+from sklearn.metrics import confusion_matrix, classification_report
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
+report = classification_report(
+    y,
+    predictions,
+    labels=[0, 1, -1],
+    target_names=['Benign', 'Pathogenic', 'Ambiguous'],
+    zero_division=0
+)
+print(report)
+
+cm = confusion_matrix(y, predictions, labels=[0, 1, -1])
+labels = ['Benign', 'Pathogenic', 'Ambiguous']
+cm_df = pd.DataFrame(cm, index=labels, columns=labels)
+plt.figure(figsize=(6, 5))
+sns.heatmap(cm_df, annot=True, fmt='d', cmap='Blues')
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.tight_layout()
+plt.savefig("confusion_matrix.png", dpi=300)
+plt.show()
+
 from matplotlib.ticker import MaxNLocator
 
 benign_mask = (y == 0) & (ensemble_scores < 0.4)
